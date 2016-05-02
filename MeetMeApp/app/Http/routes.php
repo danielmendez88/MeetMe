@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::get('/', 'HomeController@index');
+Route::get('login',['as' => 'logueo', 'uses' => 'LoginController@show']);

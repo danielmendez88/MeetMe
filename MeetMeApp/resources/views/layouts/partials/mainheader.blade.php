@@ -127,7 +127,7 @@
                                 <img src="/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                                 <p>
                                     {{ Auth::user()->name }}
-                                    <small>Member since Nov. 2012</small>
+                                    <small>Miembro desde Mayo. 2016</small>
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -145,10 +145,10 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="#" class="btn btn-default btn-flat">Perfil</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Cerrar Sesión</a>
                                 </div>
                             </li>
                         </ul>

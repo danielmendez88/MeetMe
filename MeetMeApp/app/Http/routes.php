@@ -20,3 +20,8 @@ Route::get('home', 'HomeController@index');
 Route::get('ini', 'HomeController@index');
 
 Route::get('login',['as' => 'logueo', 'uses' => 'LoginController@show']);
+/*usamos un grupo de rutas*/
+Route::group(['prefix' => 'eventos'], function(){
+
+	Route::resource('event', 'EventController');
+});

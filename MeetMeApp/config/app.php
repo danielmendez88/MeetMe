@@ -162,6 +162,11 @@ return [
          */
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
 
+        /*
+        * agregar HtmlServiceProvider
+        */
+        Collective\Html\HtmlServiceProvider::class,
+
     ],
 
     /*
@@ -211,7 +216,10 @@ return [
         * Acacha AdminLTE template alias
         */
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
-
+        // ...
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        // ...
     ],
 
 ];

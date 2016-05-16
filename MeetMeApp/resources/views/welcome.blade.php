@@ -1,2 +1,2 @@
-@extends('auth.login')
+@extends('home')
 

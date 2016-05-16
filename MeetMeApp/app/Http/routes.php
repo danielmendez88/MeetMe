@@ -15,13 +15,21 @@
     return view('welcome');
 });*/
 
-Route::get('/', 'WelcomeController@index');
+/*Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
-Route::get('ini', 'HomeController@index');
+Route::get('ini', 'HomeController@index');*/
 
-Route::get('login',['as' => 'logueo', 'uses' => 'LoginController@show']);
-/*usamos un grupo de rutas*/
-Route::group(['prefix' => 'eventos'], function(){
+Route::group(['middleware' => 'web'], function(){
+	Route::auth();
+	Route::get('/', 'WelcomeController@index');
+	Route::get('/home', 'HomeController@index');
+	Route::get('/crear', 'EventController@create');
 
-	Route::resource('event', 'EventController');
+	/*usamos un grupo de rutas*/
+	Route::group(['prefix' => 'eventos'], function(){
+
+		Route::resource('event', 'EventController');
+	});
 });
+
+//Route::get('login',['as' => 'logueo', 'uses' => 'LoginController@show']);

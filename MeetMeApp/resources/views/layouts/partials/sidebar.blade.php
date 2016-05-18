@@ -35,6 +35,7 @@
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>Inicio</span></a></li>
             <li><a href="#"><i class='fa fa-calendar'></i> <span>Agenda</span></a></li>
+            <li><a href="{{ route('evento.create') }}"><i class='fa fa-book'></i> <span>Crear Evento</span></a></li>
             <li class="treeview">
                 <a href="#"><i class='fa fa-link'></i> <span>Consultar</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">

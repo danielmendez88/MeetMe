@@ -23,13 +23,10 @@ Route::group(['middleware' => 'web'], function(){
 	Route::auth();
 	Route::get('/', 'WelcomeController@index');
 	Route::get('/home', 'HomeController@index');
-	Route::get('/crear', 'EventController@create');
-
-	/*usamos un grupo de rutas*/
-	Route::group(['prefix' => 'eventos'], function(){
-
-		Route::resource('event', 'EventController');
-	});
+	Route::get('ini', 'HomeController@index'); //se agrego en la ruta esta es la que hace la petición 
+	
 });
+
+Route::resource('evento', 'EventController', ['except' => ['destroy']]);
 
 //Route::get('login',['as' => 'logueo', 'uses' => 'LoginController@show']);

@@ -84,6 +84,7 @@ desired effect
       var d = date.getDate(),
               m = date.getMonth(),
               y = date.getFullYear();
+      var currentLangCode = 'es';    
       $('#calendar').fullCalendar({
         header: {
           left: 'prev,next today',
@@ -91,10 +92,10 @@ desired effect
           right: 'month,agendaWeek,agendaDay'
         },
         buttonText: {
-          today: 'today',
-          month: 'month',
-          week: 'week',
-          day: 'day'
+          today: 'Hoy',
+          month: 'Mes',
+          week: 'Semana',
+          day: 'Día'
         },
         //Random default events
         events: [
@@ -143,6 +144,7 @@ desired effect
             borderColor: "#3c8dbc" //Primary (light-blue)
           }
         ],
+        lang: currentLangCode,
         editable: true,
         droppable: true, // this allows things to be dropped onto the calendar !!!
         drop: function (date, allDay) { // this function is called when something is dropped

@@ -10,6 +10,7 @@
     <!-- fullCalendar 2.2.5 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script src="{{asset('/plugins/fullcalendar/fullcalendar.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/plugins/fullcalendar/lang/es.js')}}" type="text/javascript"></script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the

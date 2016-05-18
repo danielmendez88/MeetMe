@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('htmlheader_title')
-    Register
+    Nuevo Usuario
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@
             <a href="{{ url('/home') }}"><b>Meet</b>Me</a>
         </div>
 
-        @if (count($errors) > 0)
+        @if ($errors->any())
             <div class="alert alert-danger">
                 <strong>Whoops!</strong> Hay algunos problemas con tus entradas.<br><br>
                 <ul>

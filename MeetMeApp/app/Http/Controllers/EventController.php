@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\Evento;
+use Validator;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateEventoFormRequest;
 
 class EventController extends Controller
 {
@@ -36,12 +38,17 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  CreateEventoFormRequest  $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateEventoFormRequest $request)
     {
-        //
+        //agregammos una entrada
+        $input = $request->all();
+        $create = Evento::create($input);
+        return redirect()->back();
+        //return response($create);
+        //dd($input);
     }
 
     /**

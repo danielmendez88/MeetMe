@@ -18,7 +18,7 @@ class CreateEventoTables extends Migration
             $table->text('descripcion');
             $table->string('creado_por');
             $table->integer('user_id')->unsigned();
-            $table->string('ubicacion');
+            $table->string('ubicacion', 200);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')

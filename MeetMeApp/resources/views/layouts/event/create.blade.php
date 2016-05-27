@@ -25,7 +25,7 @@
 	            </div>
 			@endif
 				<div class="box box-success">
-					
+					{{ Form::hidden('user_id', Auth::user()->id, array('id' => 'user_id')) }}
 		              	<div class="box-body">
 		                    <div class="form-group">
 								{!! Form::label('nombre_evento','Nombre del evento') !!}
@@ -40,17 +40,27 @@
 		                    	{!! Form::textarea('descripcion', null, ['class' => 'form-control', 'placeholder' => 'Agregar un comentario', 'size' => '5x4']) !!}
 		                    </div>
 		                    <div class="form-group">
-		                    	{!! Form::label('user_id', 'Mi nombre') !!}
-		                    	{!! Form::text('user_id', null, ['class' => 'form-control', 'placeholder' => 'Mi Nombre']) !!}
+			                    {!! Form::label('fecha_ini', 'Fecha inicio') !!}
+			                    <div class="input-group">
+			                      <div class="input-group-addon">
+			                        <i class="fa fa-calendar"></i>
+			                      </div>
+			                      {!! Form::text('fecha_ini', null, ['class' => 'form-control datelonger', 'id' => 'fecha_ini'])!!}
+			                    </div><!-- /.input group -->
 		                    </div>
 		                    <div class="form-group">
-		                    	{!! Form::label('creado_por', 'Correo Eléctronico') !!}
-		                    	{!! Form::email('creado_por', null, ['class' => 'form-control', 'placeholder' => 'correo@dominio.com'])!!}
+		                    	{!! Form::label('fecha_fin', 'Fecha fin (opcional)') !!}
+			                    <div class="input-group">
+			                      <div class="input-group-addon">
+			                        <i class="fa fa-calendar"></i>
+			                      </div>
+			                      {!! Form::text('fecha_fin', null, ['class' => 'form-control datelonger', 'id' => 'fecha_fin'])!!}
+			                    </div><!-- /.input group -->
 		                    </div>              		
 		              	</div><!--/.box body-->
 
 		                  <div class="box-footer">
-		                    <button type="submit" class="btn btn-primary">Agregar</button>
+		                  	{{ Form::submit('Agregar', array('class' => 'btn btn-primary'))}}
 		                  </div>
 		              
 				</div>

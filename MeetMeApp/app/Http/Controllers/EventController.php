@@ -7,6 +7,8 @@ use App\Evento;
 use Validator;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateEventoFormRequest;
+use Carbon\Carbon;
+use Session;
 
 class EventController extends Controller
 {
@@ -21,7 +23,31 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        //consumo de datos json
+        $data = array(); //declaramos un array principal que va a contener los datos
+        $id = Evento::all()->lists('id');
+        $titulo = Evento::all()->lists('nombre_evento');
+        $lugar = Evento::all()->lists('ubicacion');
+        $ini_date = Evento::all()->lists('fecha_ini');
+        $end_date = Evento::all()->lists('fecha_fin');
+        $count = count($id); //contamos los ids obtenidos para saber el número exacto de eventos
+        //ciclo
+        for ($i=0; $i < $count; $i++) { 
+            $fini = Carbon::parse($ini_date[$i]);
+            $ffin = Carbon::parse($end_date[$i]);
+            # code...
+            $data[$i] = array(
+                "title" => $titulo[$i],
+                "start" => $fini->format('Y-m-d'),
+                "end" => $ffin->format('Y-m-d'),
+                "url" => "http://meetme.app/evento/detalle/".$id[$i]
+                //en el campo "url" concatenamos el el URL con el id del evento para luego
+                //en el evento onclick de JS hacer referencia a este y usar el método show
+                //para mostrar los datos completos de un evento
+            );
+        }
+        json_encode($data); //convertimos el array principal $data a un objeto Json
+        return $data;
     }
 
     /**
@@ -45,8 +71,11 @@ class EventController extends Controller
     {
         //agregammos una entrada
         $input = $request->all();
-        $create = Evento::create($input);
-        return redirect()->back();
+        $input['fecha_ini'] = Carbon::createFromFormat('d/m/Y', $input['fecha_ini'])->format('Y-m-d');
+        $input['fecha_fin'] = Carbon::createFromFormat('d/m/Y', $input['fecha_fin'])->format('Y-m-d');
+        $evento = Evento::create($input);
+        Session::flash('flash_message', 'Evento Agregado Exitosamente');
+        return redirect('evento/detalle/'.$evento->id);
         //return response($create);
         //dd($input);
     }
@@ -60,6 +89,9 @@ class EventController extends Controller
     public function show($id)
     {
         //
+        return view('layouts.event.detalle_evento')
+        ->with('title', 'Detalle de evento')
+        ->with('detalleEvent', Evento::find($id));
     }
 
     /**

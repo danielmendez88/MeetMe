@@ -27,6 +27,8 @@ Route::group(['middleware' => 'web'], function(){
 	
 });
 
-Route::resource('evento', 'EventController', ['except' => ['destroy']]);
-
+Route::resource('evento', 'EventController', ['except' => ['destroy', 'show']]);
+Route::group(['prefix' => 'evento'], function(){
+	Route::get('detalle/{id}', ['as' => 'detalle', 'uses' => 'EventController@show']);	
+});
 //Route::get('login',['as' => 'logueo', 'uses' => 'LoginController@show']);

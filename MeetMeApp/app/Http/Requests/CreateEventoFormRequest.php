@@ -27,6 +27,8 @@ class CreateEventoFormRequest extends Request
             //
             'nombre_evento' => 'required|min:5',
             'ubicacion' => 'required',
+            'fecha_ini' => 'required|date_format:"d/m/Y"',
+            'fecha_fin' => ' date_format:"d/m/Y"'
         ];
 
         return $rules;
